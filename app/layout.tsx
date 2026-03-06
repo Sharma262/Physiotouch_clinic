@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
-import { clinicConfig } from "@/lib/config";
 
 const lato = Lato({
   subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
   variable: "--font-lato",
 });
-
 export const metadata: Metadata = {
   title: "Physiotouch Clinic | Best Physiotherapy in Sector 45 Gurugram",
   description: "Physiotouch Clinic offers expert physiotherapy in Sector 45, Gurugram by Dr. Kavita Sharma (BPT, MPT). Treating back pain, knee pain, sports injuries & more. Book appointment: +91 83072 10468",
@@ -39,6 +37,10 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://physiotouch-clinic.vercel.app",
     siteName: "Physiotouch Clinic",
+  },
+
+  verification: {
+    google: "google21e4c4d3833666b8",  // paste your code here
   },
 };
 

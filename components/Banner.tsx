@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { clinicConfig } from "@/lib/config";
 
 export default function Banner({ onBookClick }: { onBookClick: () => void }) {
@@ -13,27 +14,68 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
 
   return (
     <section className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
-
       {/* Top-left mint circle — hidden on mobile */}
       <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-teal-100 opacity-60 pointer-events-none hidden md:block" />
 
       {/* Bottom-right concentric arcs */}
       <div className="absolute -bottom-10 -right-10 pointer-events-none hidden md:block">
         <svg width="300" height="300" viewBox="0 0 300 300" fill="none">
-          <circle cx="300" cy="300" r="80"  stroke="#1d4ed8" strokeWidth="1" opacity="0.15"/>
-          <circle cx="300" cy="300" r="110" stroke="#1d4ed8" strokeWidth="1" opacity="0.12"/>
-          <circle cx="300" cy="300" r="140" stroke="#1d4ed8" strokeWidth="1" opacity="0.09"/>
-          <circle cx="300" cy="300" r="170" stroke="#1d4ed8" strokeWidth="1" opacity="0.07"/>
-          <circle cx="300" cy="300" r="200" stroke="#1d4ed8" strokeWidth="1" opacity="0.05"/>
-          <circle cx="300" cy="300" r="230" stroke="#1d4ed8" strokeWidth="1" opacity="0.04"/>
+          <circle
+            cx="300"
+            cy="300"
+            r="80"
+            stroke="#1d4ed8"
+            strokeWidth="1"
+            opacity="0.15"
+          />
+          <circle
+            cx="300"
+            cy="300"
+            r="110"
+            stroke="#1d4ed8"
+            strokeWidth="1"
+            opacity="0.12"
+          />
+          <circle
+            cx="300"
+            cy="300"
+            r="140"
+            stroke="#1d4ed8"
+            strokeWidth="1"
+            opacity="0.09"
+          />
+          <circle
+            cx="300"
+            cy="300"
+            r="170"
+            stroke="#1d4ed8"
+            strokeWidth="1"
+            opacity="0.07"
+          />
+          <circle
+            cx="300"
+            cy="300"
+            r="200"
+            stroke="#1d4ed8"
+            strokeWidth="1"
+            opacity="0.05"
+          />
+          <circle
+            cx="300"
+            cy="300"
+            r="230"
+            stroke="#1d4ed8"
+            strokeWidth="1"
+            opacity="0.04"
+          />
         </svg>
       </div>
 
       {/* Top-right dot cluster — hidden on mobile */}
       <div className="absolute top-10 right-10 pointer-events-none opacity-20 hidden md:block">
         <svg width="120" height="120" viewBox="0 0 120 120">
-          {[0,1,2,3,4].map(row =>
-            [0,1,2,3,4].map(col => (
+          {[0, 1, 2, 3, 4].map((row) =>
+            [0, 1, 2, 3, 4].map((col) => (
               <circle
                 key={`${row}-${col}`}
                 cx={col * 24 + 12}
@@ -51,10 +93,8 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-
           {/* Left — Text */}
           <div className="flex-1 text-center md:text-left">
-
             <div
               className="transition-all duration-700 ease-out"
               style={{
@@ -77,9 +117,8 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
               }}
             >
               <h1 className="text-2xl md:text-4xl font-black text-gray-800 leading-tight mb-3">
-                Living{" "}
-                <span className="text-blue-700">Pain Free</span>{" "}
-                And Better Life With{" "}
+                Living <span className="text-blue-700">Pain Free</span> And
+                Better Life With{" "}
                 <span className="text-blue-700">Non-Surgical Treatment!</span>
               </h1>
             </div>
@@ -116,7 +155,6 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
                 Book An Appointment
               </button>
             </div>
-
           </div>
 
           {/* Right — Doctor image */}
@@ -129,24 +167,34 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
               transitionDelay: "200ms",
             }}
           >
-            {/* Mobile card */}
-            <div className="md:hidden w-48 h-48 rounded-3xl bg-gradient-to-br from-teal-400 to-blue-500 flex items-center justify-center shadow-lg">
-              <div className="text-center text-white">
-                <div className="text-5xl mb-2">👩‍⚕️</div>
-                <p className="text-xs font-bold opacity-80">Dr. Kavita Sharma</p>
-              </div>
-            </div>
+         
 
-            {/* Desktop card */}
-            <div className="hidden md:flex w-80 h-[340px] rounded-3xl bg-white/20 border-2 border-white/40 items-center justify-center">
-              <div className="text-center text-white/80">
-                <div className="text-5xl mb-3">👩‍⚕️</div>
-                <p className="text-sm font-bold">Add Dr. Kavita's photo</p>
-                <p className="text-xs mt-1 opacity-70">Replace with next/image</p>
-              </div>
+          {/* Desktop */}
+          <div className="hidden md:flex flex-1 justify-end">
+            <div className="relative w-80 h-[340px] rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/nitin.jpg"
+                alt="Dr. Kavita Sharma - Physiotherapist Gurugram"
+                fill
+                className="object-cover object-top"
+                priority
+              />
             </div>
           </div>
 
+          {/* Mobile */}
+          <div className="md:hidden flex justify-center w-full">
+            <div className="relative w-48 h-48 rounded-3xl overflow-hidden shadow-lg">
+              <Image
+                src="/nitin.jpg"
+                alt="Dr. Kavita Sharma - Physiotherapist Gurugram"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+            </div>
+          </div>
+          </div>
         </div>
       </div>
 
@@ -170,7 +218,9 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
             </div>
             <div className="flex-1 text-center px-6">
               <p className="text-white text-base md:text-xl font-black">
-                <span className="text-yellow-300">{clinicConfig.stats[0].value}</span>{" "}
+                <span className="text-yellow-300">
+                  {clinicConfig.stats[0].value}
+                </span>{" "}
                 Patients Treated{" "}
                 <span className="text-yellow-300">Without Surgery</span>
               </p>
@@ -178,7 +228,6 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

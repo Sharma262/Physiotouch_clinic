@@ -16,9 +16,9 @@ export const clinicConfig = {
     area: "Sector 45, Gurugram",
   },
   timings: {
-    days: "Mon – Sat",
+    days: "Mon – Sun",
     hours: "9:00 AM – 7:00 PM",
-    sunday: "Closed on Sunday",
+    // sunday: "Closed on Sunday",
   },
   social: {
     instagram: "https://instagram.com/physiotouch",

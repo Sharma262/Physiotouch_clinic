@@ -92,12 +92,15 @@ export default function ContactSection() {
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
           <div className="flex flex-col md:flex-row">
             {/* Left — dark panel with dot pattern */}
-            <div className="flex-1 bg-gray-900 p-10 relative overflow-hidden">
+            <div
+              className="flex-1 p-10 relative overflow-hidden"
+              style={{ background: "#2b1f51" }}
+            >
               {/* Dot pattern overlay */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  backgroundImage: `radial-gradient(circle, #ffffff18 1px, transparent 1px)`,
+                  backgroundImage: `radial-gradient(circle, #85c22615 1px, transparent 1px)`,
                   backgroundSize: "22px 22px",
                 }}
               />
@@ -105,16 +108,28 @@ export default function ContactSection() {
               {/* Content */}
               <div className="relative z-10 space-y-7">
                 <div>
-                  <h3 className="text-white font-black text-2xl mb-2">
-                    Contact Information
-                  </h3>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className="w-1 h-6 rounded-full"
+                      style={{ background: "#85c226" }}
+                    />
+                    <h3 className="text-white font-black text-2xl">
+                      Contact Information
+                    </h3>
+                  </div>
                   <p className="text-gray-400 text-sm">
                     Fill the form or reach us directly
                   </p>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "#85c22625",
+                      border: "1px solid #85c22640",
+                    }}
+                  >
                     <Phone size={18} className="text-white" />
                   </div>
                   <div>
@@ -129,7 +144,13 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "#85c22625",
+                      border: "1px solid #85c22640",
+                    }}
+                  >
                     <Mail size={18} className="text-white" />
                   </div>
                   <div>
@@ -144,7 +165,13 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "#85c22625",
+                      border: "1px solid #85c22640",
+                    }}
+                  >
                     <MapPin size={18} className="text-white" />
                   </div>
                   <div>
@@ -156,7 +183,13 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{
+                      background: "#85c22625",
+                      border: "1px solid #85c22640",
+                    }}
+                  >
                     <Clock size={18} className="text-white" />
                   </div>
                   <div>
@@ -165,8 +198,8 @@ export default function ContactSection() {
                       {clinicConfig.timings.days}: {clinicConfig.timings.hours}
                     </p>
                     {/* <p className="text-gray-400 text-sm">
-                      {clinicConfig.timings.sunday}
-                    </p> */}
+                        {clinicConfig.timings.sunday}
+                      </p> */}
                   </div>
                 </div>
               </div>
@@ -288,7 +321,11 @@ export default function ContactSection() {
                   <button
                     onClick={handleSubmit}
                     disabled={loading}
-                    className="mt-5 w-full bg-blue-700 text-white font-bold py-3 rounded-full hover:bg-blue-800 transition-colors cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="mt-5 w-full text-white font-bold py-3 rounded-full transition-colors cursor-pointer disabled:opacity-60"
+                    style={{
+                      background: "#2b1f51",
+                      border: "2px solid #85c226",
+                    }}
                   >
                     {loading ? "Sending..." : "Send Message"}
                   </button>

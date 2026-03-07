@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { transporter } from "@/lib/mailer";
+import { emailWrapper, ownerEmailContent, patientEmailContent } from "@/lib/emailTemplates";
 
 export async function POST(req: NextRequest) {
 
@@ -31,15 +32,7 @@ export async function POST(req: NextRequest) {
       from: `"Clinic Website" <${process.env.GMAIL_USER}>`,
       to: process.env.CLINIC_OWNER_EMAIL,
       subject: `New Appointment Request — ${name}`,
-      html: `
-        <h2>New Appointment Request</h2>
-        <table style="font-size:16px; line-height:2">
-          <tr><td><b>Name</b></td><td>: ${name}</td></tr>
-          <tr><td><b>Phone</b></td><td>: ${phone}</td></tr>
-          <tr><td><b>Email</b></td><td>: ${email || "Not provided"}</td></tr>
-          <tr><td><b>Message</b></td><td>: ${message || "No message"}</td></tr>
-        </table>
-      `,
+      html: emailWrapper(ownerEmailContent(name, phone, email, message)),
     });
 
     // 5. Send confirmation email to patient (only if they gave their email)
@@ -48,15 +41,9 @@ export async function POST(req: NextRequest) {
         from: `"PhysioClinic Gurgaon" <${process.env.GMAIL_USER}>`,
         to: email,
         subject: "Appointment Request Received ✅",
-        html: `
-          <h2>Hi ${name}, we received your request!</h2>
-          <p>Thank you for reaching out to <b>PhysioClinic Gurgaon</b>.</p>
-          <p>Our team will call you on <b>${phone}</b> shortly to confirm your appointment.</p>
-          <br/>
-          <p>— Dr. Kavita sharma & Team</p>
-        `,
+        html: emailWrapper(patientEmailContent(name, phone)),
       });
-    }
+    };
 
     // 6. Return success
     return NextResponse.json(

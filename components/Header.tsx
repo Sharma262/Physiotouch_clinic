@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { clinicConfig } from "@/lib/config";
 import { Phone } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -20,7 +21,10 @@ export default function Header({ onBookClick }: { onBookClick: () => void }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
@@ -35,16 +39,16 @@ export default function Header({ onBookClick }: { onBookClick: () => void }) {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
-
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-11 h-11 bg-blue-700 rounded-full flex items-center justify-center">
-            <span className="text-white font-black text-xl">P</span>
-          </div>
-          <div>
-            <p className="text-blue-700 font-black text-xl leading-tight">Physiotouch</p>
-            <p className="text-gray-400 text-xs leading-tight">Clinic</p>
-          </div>
+          <Image  
+            src="/logo.png"
+            alt="Physiotouch Clinic Logo"
+            width={70}
+            height={30}
+            className="object-contain"
+            priority
+          />
         </div>
 
         {/* Nav links — hidden on mobile */}
@@ -76,12 +80,11 @@ export default function Header({ onBookClick }: { onBookClick: () => void }) {
           {/* Book Appointment — blue */}
           <button
             onClick={onBookClick}
-            className="hidden sm:block bg-blue-700 text-white font-bold px-5 py-2.5 rounded-full hover:bg-blue-800 transition-colors text-sm"
+            className="hidden sm:block bg-blue-700 text-white font-bold px-5 py-2.5 rounded-full hover:bg-blue-800 transition-colors text-sm cursor-pointer"
           >
             Book Appointment
           </button>
         </div>
-
       </div>
     </header>
   );

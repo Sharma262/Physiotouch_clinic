@@ -91,7 +91,7 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
       {/* Green shape — desktop only */}
       <div className="absolute top-0 right-0 w-[42%] h-full bg-gradient-to-bl from-teal-400 to-blue-500 rounded-bl-[80px] z-0 hidden md:block" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-6">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 pt-28 pb-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Left — Text */}
           <div className="flex-1 text-center md:text-left">

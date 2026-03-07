@@ -164,9 +164,9 @@ export default function ContactSection() {
                     <p className="text-white font-bold">
                       {clinicConfig.timings.days}: {clinicConfig.timings.hours}
                     </p>
-                    <p className="text-gray-400 text-sm">
+                    {/* <p className="text-gray-400 text-sm">
                       {clinicConfig.timings.sunday}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>

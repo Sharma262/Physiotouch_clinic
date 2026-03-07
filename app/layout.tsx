@@ -9,10 +9,12 @@ const lato = Lato({
 });
 export const metadata: Metadata = {
   title: "Physiotouch Clinic | Best Physiotherapy in Sector 45 Gurugram",
-  description: "Physiotouch Clinic offers expert physiotherapy in Sector 45, Gurugram by Dr. Kavita Sharma (BPT, MPT). Treating back pain, knee pain, sports injuries & more. Book appointment: +91 83072 10468",
+  description: "Physiotouch Clinic is the best physiotherapy clinic in Sector 45, Gurugram. Expert treatment by Dr. Kavita Sharma (P.T). Treating back pain, knee pain, sports injuries & more. Call: +91 95605 79893",
   keywords: [
     "physiotherapy gurgaon",
+    "physiotherapist gurgaon",
     "physiotherapy gurugram",
+    "best physiotherapy clinic gurugram",
     "physiotherapist sector 45 gurgaon",
     "back pain treatment gurugram",
     "knee pain physiotherapy gurgaon",

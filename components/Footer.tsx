@@ -1,10 +1,10 @@
 import { clinicConfig } from "@/lib/config";
 import { Phone, Mail, MapPin, Clock, Instagram, Facebook } from "lucide-react";
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="text-gray-300" style={{ background: "#2b1f51" }}>
       {/* Main footer */}
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -12,11 +12,11 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src="/logo.png"
+                src="/clinic_logo_with_bg.jpeg"
                 alt="Physiotouch Clinic Logo"
                 width={80}
                 height={80}
-                className="object-contain brightness-0 invert"
+                className="object-contain w-16 h-16 md:w-20 md:h-20 rounded-full"
                 // brightness-0 invert makes it white for the dark footer
               />
             </div>
@@ -30,7 +30,8 @@ export default function Footer() {
                 href={clinicConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
+                style={{ background: "#3d2d6e" }}
               >
                 <Instagram size={16} />
               </a>
@@ -39,7 +40,8 @@ export default function Footer() {
                 href={clinicConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
+                style={{ background: "#3d2d6e" }}
               >
                 <Facebook size={16} />
               </a>
@@ -47,7 +49,8 @@ export default function Footer() {
                 href={clinicConfig.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
+                style={{ background: "#3d2d6e" }}
               >
                 <Phone size={16} />
               </a>
@@ -56,19 +59,32 @@ export default function Footer() {
 
           {/* Col 2 — Contact */}
           <div>
-            <h4 className="text-white font-black mb-5">Contact</h4>
+            <h4
+              className="font-black mb-5 pb-2 border-b"
+              style={{ color: "#85c226", borderColor: "#3d2d6e" }}
+            >
+              Contact
+            </h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <Phone size={15} className="text-blue-400 mt-0.5 shrink-0" />
-                <a
-                  href={`tel:${clinicConfig.contact.phone}`}
-                  className="text-sm hover:text-white transition-colors"
-                >
-                  {clinicConfig.contact.phoneDisplay}
-                </a>
+                <Phone size={15} style={{ color: "#85c226" }} />
+                <div>
+                  <a
+                    href={`tel:${clinicConfig.contact.phone}`}
+                    className="text-sm hover:text-white transition-colors block"
+                  >
+                    {clinicConfig.contact.phoneDisplay}
+                  </a>
+                  <a
+                    href={`tel:${clinicConfig.contact.phone2}`}
+                    className="text-sm hover:text-white transition-colors block mt-0.5"
+                  >
+                    {clinicConfig.contact.phoneDisplay2}
+                  </a>
+                </div>
               </div>
               <div className="flex items-start gap-3">
-                <Mail size={15} className="text-blue-400 mt-0.5 shrink-0" />
+                <Mail size={15} style={{ color: "#85c226" }} />
                 <a
                   href={`mailto:${clinicConfig.contact.email}`}
                   className="text-sm hover:text-white transition-colors"
@@ -77,13 +93,17 @@ export default function Footer() {
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin size={15} className="text-blue-400 mt-0.5 shrink-0" />
+                <MapPin
+                  size={15}
+                  className="text-blue-400 mt-0.5 shrink-0"
+                  style={{ color: "#85c226" }}
+                />
                 <p className="text-sm leading-relaxed">
                   {clinicConfig.contact.address}
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <Clock size={15} className="text-blue-400 mt-0.5 shrink-0" />
+                <Clock size={15} style={{ color: "#85c226" }} />
                 <div>
                   <p className="text-sm">
                     {clinicConfig.timings.days}: {clinicConfig.timings.hours}
@@ -98,14 +118,22 @@ export default function Footer() {
 
           {/* Col 3 — Conditions */}
           <div>
-            <h4 className="text-white font-black mb-5">We Treat</h4>
+            <h4
+              className="font-black mb-5 pb-2 border-b"
+              style={{ color: "#85c226", borderColor: "#3d2d6e" }}
+            >
+              We Treat
+            </h4>
             <ul className="space-y-2">
               {clinicConfig.conditions.map((condition) => (
                 <li
                   key={condition}
                   className="text-sm text-gray-400 flex items-center gap-2"
                 >
-                  <span className="w-1.5 h-1.5 bg-blue-700 rounded-full shrink-0" />
+                  <span
+                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                    style={{ background: "#85c226" }}
+                  />
                   {condition}
                 </li>
               ))}
@@ -113,7 +141,12 @@ export default function Footer() {
           </div>
           {/* Col 4 — Google Map */}
           <div>
-            <h4 className="text-white font-black mb-5">Find Us</h4>
+            <h4
+              className="font-black mb-5 pb-2 border-b"
+              style={{ color: "#85c226", borderColor: "#3d2d6e" }}
+            >
+              Find Us
+            </h4>
             <div className="rounded-xl overflow-hidden h-48 bg-gray-800">
               <iframe
                 src={clinicConfig.googleMapsEmbed}

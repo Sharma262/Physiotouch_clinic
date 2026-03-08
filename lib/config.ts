@@ -13,7 +13,7 @@ export const clinicConfig = {
     phone2: "8059002867",
     phoneDisplay2: "+91 80590 02867",
     email: "sharmakavi134@gmail.com",
-    address: "H No. 973, Behind Community Centre, Near DPS School, Sector 45, Gurugram",
+    address: "H No. 973, Behind Community Centre, Near DPS School, Sector 45, Gurugram, Haryana",
     area: "Sector 45, Gurugram",
   },
   timings: {

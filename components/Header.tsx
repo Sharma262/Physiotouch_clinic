@@ -66,7 +66,7 @@ export default function Header({ onBookClick }: { onBookClick: () => void }) {
               <span>Call Us</span>
             </a>
             <button onClick={onBookClick}
-              className="text-white font-bold px-5 py-2.5 rounded-full transition-colors text-sm"
+              className="text-white font-bold px-5 py-2.5 rounded-full transition-colors text-sm cursor-pointer hover:-translate-y-0.5"
               style={{ background: "#2b1f51" }}>
               Book Appointment
             </button>

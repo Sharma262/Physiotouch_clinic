@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { clinicConfig } from "@/lib/config";
 import Image from "next/image";
+import TypewriterText from "@/components/TypewriterText";
 
 export default function Banner({ onBookClick }: { onBookClick: () => void }) {
   const [visible, setVisible] = useState(false);
@@ -141,7 +142,7 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
                   className="inline-block text-xs font-bold px-4 py-1 rounded-full"
                   style={{ background: "#f0ffd6", color: "#4a7a0e" }}
                 >
-                  "{clinicConfig.tagline}"
+                  {clinicConfig.tagline}
                 </span>
               </div>
             </div>
@@ -155,14 +156,25 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
               }}
             >
               <h1
-                className="text-2xl md:text-4xl font-black leading-tight mb-3"
+                className="text-2xl md:text-4xl font-black leading-tight mb-3 min-h-[120px] md:min-h-[100px]"
                 style={{ color: "#2b1f51" }}
               >
-                Living <span style={{ color: "#85c226" }}>Pain Free</span> And
-                Better Life With{" "}
-                <span style={{ color: "#85c226" }}>
-                  Non-Surgical Treatment!
-                </span>
+                <TypewriterText
+                  speed={45}
+                  deleteSpeed={25}
+                  sequences={[
+                    {
+                      text: "Let's Talk Pain",
+                      color: "#85c226",
+                      pause: 1200,
+                    },
+                    {
+                      text: "Living Pain Free And Better Life With Non-Surgical Treatment!",
+                      color: "#2b1f51",
+                      pause: 3000,
+                    },
+                  ]}
+                />
               </h1>
             </div>
 
@@ -281,7 +293,10 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
                 · Sector 45
               </p>
             </div>
-            <div className="hidden md:block w-0.5 h-10 mx-4" style={{ background: "#85c226" }} />
+            <div
+              className="hidden md:block w-0.5 h-10 mx-4"
+              style={{ background: "#85c226" }}
+            />
             <div className="flex-1 text-center px-6">
               <p className="text-white text-base md:text-xl font-black">
                 <span style={{ color: "#85c226" }}>

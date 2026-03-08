@@ -94,7 +94,7 @@ export default function AboutSection() {
 
           {/* Right — extra details + stats */}
           <div className="flex-1">
-            <p className="text-gray-500 leading-relaxed mb-4">
+            <p className="text-gray-500 leading-relaxed ">
               Our patient-centric approach combines accurate diagnosis with
               personalised treatment plans — ensuring every patient receives the
               right care at the right time.

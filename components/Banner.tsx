@@ -135,7 +135,7 @@ export default function Banner({ onBookClick }: { onBookClick: () => void }) {
                   className="inline-block text-xs font-bold px-4 py-1 rounded-full"
                   style={{ background: "#ede9ff", color: "#2b1f51" }}
                 >
-                  Physiotherapy Clinic · Sector 45, Gurugram
+                  Best Physiotherapy Clinic · Sector 45, Gurugram
                 </span>
                 <span
                   className="inline-block text-xs font-bold px-4 py-1 rounded-full"

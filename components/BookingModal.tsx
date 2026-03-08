@@ -82,7 +82,7 @@ export default function BookingModal({ isOpen, onClose }: Props) {
             </p>
             <button
               onClick={handleClose}
-              className="mt-6 bg-blue-700 text-white font-bold px-8 py-3 rounded-full hover:bg-blue-800 transition-colors"
+              className="mt-6 bg-blue-700 text-white font-bold px-8 py-3 rounded-full hover:bg-blue-800 transition-colors cursor-pointer"
             >
               Done
             </button>

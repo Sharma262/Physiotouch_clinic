@@ -24,7 +24,6 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
-  console.log("ENV CHECK:", process.env.GMAIL_USER, process.env.GMAIL_APP_PASSWORD?.length);
 
   try {
     // 4. Send email to clinic owner

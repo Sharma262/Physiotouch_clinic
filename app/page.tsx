@@ -10,6 +10,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import VideosSection from "@/components/VideoSection";
 import { clinicConfig } from "@/lib/config";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Home() {
         <AboutSection />
         <ReviewsSection />
         <VideosSection />
+        <FAQSection />
         <ContactSection />
         <Footer />
       </main>

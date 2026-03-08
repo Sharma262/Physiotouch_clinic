@@ -94,11 +94,41 @@ export const clinicConfig = {
       id: "uem67igd5KI",
     },
   ],
+  faqs: [
+    {
+      question: "What is the best physiotherapy clinic in Gurgaon for pain relief?",
+      answer: "Physiotouch Clinic is one of the best physiotherapy clinics in Gurgaon, offering advanced pain relief treatments for back pain, neck pain, knee pain, joint pain, sciatica, slip disc, and sports injuries. Our expert physiotherapists and chiropractors use non-surgical, evidence-based techniques like manual therapy, spinal adjustments, dry needling, and postural correction to provide long-term pain relief and mobility improvement.",
+    },
+    {
+      question: "How many physiotherapy sessions are needed for full recovery?",
+      answer: "The number of physiotherapy sessions required depends on the severity of your condition, pain intensity, and overall health. Most patients experience significant pain relief in 2-3 sessions, while chronic conditions like sciatica, frozen shoulder, or arthritis may require 6-10 sessions. At Physiotouch Clinic, our experienced physiotherapists in Gurgaon create personalized rehabilitation plans using manual therapy, strength training, and mobility exercises to ensure faster recovery and long-lasting results.",
+    },
+    {
+      question: "Can physiotherapy completely cure back pain and neck pain?",
+      answer: "Yes! Physiotherapy is highly effective in treating and curing back pain and neck pain by addressing the root cause rather than just symptoms. At Physiotouch Clinic, we use spinal mobilization, myofascial release, postural correction, and core strengthening to treat conditions like slip disc, cervical spondylosis, sciatica, and poor posture. Our non-surgical approach ensures pain relief, improved spinal health, and prevention of future injuries, making us the best physiotherapy clinic in Gurgaon for back pain and neck pain treatment.",
+    },
+    {
+      question: "What is the difference between physiotherapy and chiropractic treatment?",
+      answer: "Physiotherapy and chiropractic care both focus on pain relief and rehabilitation, but they work differently. Physiotherapy focuses on muscle strengthening, mobility improvement, and injury recovery using exercises, manual therapy, and electrotherapy. Chiropractic treatment, on the other hand, specializes in spinal adjustments, posture correction, and nervous system alignment to relieve back pain, neck pain, and joint dysfunction. At Physiotouch Clinic, we offer both physiotherapy and chiropractic care in Gurgaon, combining the best of both treatments to ensure fast and effective recovery.",
+    },
+    {
+      question: "What conditions does Physiotouch Clinic treat?",
+      answer: "We treat a wide range of conditions including back pain, neck pain, knee pain, frozen shoulder, sciatica, sports injuries, post-surgery rehabilitation, posture correction, and joint pain. If you are unsure, call us and we will guide you.",
+    },
+    {
+      question: "Is chiropractic care safe, and does it hurt?",
+      answer: "Yes! Chiropractic care is completely safe when performed by a certified chiropractor. At Physiotouch Clinic, our experienced chiropractors in Gurgaon use gentle spinal adjustments, posture corrections, and manual therapy techniques to treat slip disc, back pain, sciatica, and migraines. Some patients may experience mild soreness after the first session, similar to post-exercise discomfort, but chiropractic adjustments are painless and designed to reduce tension, improve mobility, and restore spinal health.",
+    },
+    {
+      question: "How do I book an appointment at Physiotouch Clinic?",
+      answer: "You can book an appointment by clicking the 'Book An Appointment' button on this page, filling the contact form, calling us directly at +91 95605 79893 or +91 80590 02867, or messaging us on WhatsApp.",
+    },
+  ],
 };
 
 const nextConfig = {
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/avif", "image/webp", "image/png", "image/jpg", "image/jpeg"],
   },
   compress: true,
 };

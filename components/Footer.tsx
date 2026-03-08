@@ -35,16 +35,6 @@ export default function Footer() {
               >
                 <Instagram size={16} />
               </a>
-
-              <a
-                href={clinicConfig.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
-                style={{ background: "#3d2d6e" }}
-              >
-                <Facebook size={16} />
-              </a>
               <a
                 href={clinicConfig.social.whatsapp}
                 target="_blank"

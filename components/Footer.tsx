@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src="/clinic_logo_with_bg.jpeg"
+                src="/logo-white-bg.jpeg"
                 alt="Physiotouch Clinic Logo"
                 width={80}
                 height={80}

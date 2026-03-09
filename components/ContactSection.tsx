@@ -109,7 +109,7 @@ export default function ContactSection() {
                 <span className="w-1 h-5 rounded-full" style={{ background: "#85c226" }} />
                 <h3 className="text-white font-black text-lg">Contact Information</h3>
               </div>
-              <p className="text-xs ml-3" style={{ color: "#c4b8e8" }}>
+              <p className="text-xs ml-3" style={{ color: "#d4ccf0" }}>
                 Fill the form or reach us directly
               </p>
             </div>
@@ -241,6 +241,7 @@ export default function ContactSection() {
             </div>
             <iframe
               src={clinicConfig.googleMapsEmbed}
+              title="Physiotouch Clinic location on Google Maps"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: "350px" }}

@@ -44,7 +44,7 @@ export default function Header({ onBookClick }: { onBookClick: () => void }) {
         <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Image src="/logo-white-bg.jpeg"  alt="Physiotouch Clinic Logo"
+            <Image src="/logo-white-bg.jpeg"  alt="Physiotouch Clinic - Best Physiotherapy in Sector 45 Gurugram"
               width={70} height={30} className="object-contain rounded-full" priority />
           </div>
           {/* Nav */}
@@ -85,7 +85,7 @@ export default function Header({ onBookClick }: { onBookClick: () => void }) {
         <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Image src="/logo-white-bg.jpeg" alt="Physiotouch Clinic Logo"
+            <Image src="/logo-white-bg.jpeg" alt="Physiotouch Clinic - Best Physiotherapy in Sector 45 Gurugram"
               width={60} height={40} className="object-contain w-16 h-16 md:w-20 md:h-20 rounded-full" priority />
           </div>
           {/* Buttons */}

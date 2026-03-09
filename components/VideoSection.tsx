@@ -105,9 +105,9 @@ export default function VideosSection() {
 
                   {/* Text */}
                   <div className="flex flex-col justify-center">
-                    <h4 className="text-gray-800 font-black text-sm leading-snug mb-2 group-hover:text-blue-700 transition-colors">
+                    <h3 className="text-gray-800 font-black text-sm leading-snug mb-2 group-hover:text-blue-700 transition-colors">
                       {video.title}
-                    </h4>
+                    </h3>
                   </div>
                 </a>
               ))}

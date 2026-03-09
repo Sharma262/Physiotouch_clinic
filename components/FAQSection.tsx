@@ -38,7 +38,7 @@ export default function FAQSection() {
               style={{ color: "#2b1f51" }}>
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-500 text-sm leading-relaxed mb-6">
+            <p className="text-gray-600 text-sm leading-relaxed mb-6">
               Can't find your answer here? Call us directly and we'll be happy to help.
             </p>
             <a
@@ -62,12 +62,12 @@ export default function FAQSection() {
                   onClick={() => toggle(index)}
                   className="w-full flex items-center justify-between gap-4 py-5 text-left cursor-pointer group"
                 >
-                  <span
+                  <h3
                     className="font-bold text-base leading-snug transition-colors"
                     style={{ color: openIndex === index ? "#85c226" : "#2b1f51" }}
                   >
                     {faq.question}
-                  </span>
+                  </h3>
                   <span
                     className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all"
                     style={{

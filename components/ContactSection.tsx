@@ -1,49 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { clinicConfig } from "@/lib/config";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-
-interface FormErrors {
-  name?: string;
-  phone?: string;
-  email?: string;
-}
+import { clinicConfig } from "@/lib/config";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [serverError, setServerError] = useState("");
 
   const validate = () => {
-    const newErrors: FormErrors = {};
-    if (!form.name.trim()) newErrors.name = "Name is required.";
-    if (!form.phone.trim()) {
-      newErrors.phone = "Phone number is required.";
-    } else if (!/^[0-9]{10}$/.test(form.phone)) {
-      newErrors.phone = "Enter a valid 10-digit phone number.";
-    }
-    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = "Enter a valid email address.";
-    }
-    return newErrors;
+    const e: Record<string, string> = {};
+    if (!form.name.trim()) e.name = "Name is required";
+    if (!form.phone.trim()) e.phone = "Phone is required";
+    else if (!/^\d{10}$/.test(form.phone.trim())) e.phone = "Enter a valid 10-digit number";
+    return e;
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
   const handleSubmit = async () => {
-    setServerError("");
-    const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-    setErrors({});
+    const e = validate();
+    if (Object.keys(e).length > 0) { setErrors(e); return; }
     setLoading(true);
     try {
       const res = await fetch("/api/appointment", {
@@ -51,288 +33,223 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setSuccess(true);
         setForm({ name: "", phone: "", email: "", message: "" });
-      } else {
-        setServerError(data.error || "Something went wrong.");
       }
     } catch {
-      setServerError("Network error. Please try again.");
+      setErrors({ name: "Something went wrong. Please try again." });
     } finally {
       setLoading(false);
     }
   };
 
+  const contactItems = [
+    {
+      icon: <Phone size={16} />,
+      label: "Phone",
+      value: `${clinicConfig.contact.phone} / ${clinicConfig.contact.phone2}`,
+      href: `tel:${clinicConfig.contact.phone}`,
+    },
+    {
+      icon: <Mail size={16} />,
+      label: "Email",
+      value: clinicConfig.contact.email,
+      href: `mailto:${clinicConfig.contact.email}`,
+    },
+    {
+      icon: <MapPin size={16} />,
+      label: "Address",
+      value: clinicConfig.contact.address,
+      href: clinicConfig.contact.mapUrl,
+    },
+    {
+      icon: <Clock size={16} />,
+      label: "Timings",
+      value: `${clinicConfig.timings.days} ${clinicConfig.timings.hours}`,
+      href: null,
+    },
+  ];
+
   return (
-    <section id="contact" className="py-12 bg-white relative overflow-hidden">
+    <section id="contact" className="py-16 relative overflow-hidden"
+      style={{ background: "#f8f7ff" }}>
+
       {/* Dotted background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
+      <div className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #1d4ed820 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, #2b1f5110 1px, transparent 1px)`,
           backgroundSize: "28px 28px",
         }}
       />
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
-        {/* Heading */}
-        <div className="text-center mb-8">
-          <span className="flex items-center justify-center gap-2 text-blue-700 font-bold text-sm mb-3">
-            <span className="w-1 h-5 bg-blue-700 rounded-full inline-block" />
+
+        {/* Section heading */}
+        <div className="mb-10">
+          <span className="flex items-center gap-2 font-bold text-sm mb-2"
+            style={{ color: "#2b1f51" }}>
+            <span className="w-1 h-5 rounded-full" style={{ background: "#85c226" }} />
             Get In Touch
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-800">
+          <h2 className="text-3xl md:text-4xl font-black" style={{ color: "#2b1f51" }}>
             Contact Us
           </h2>
         </div>
 
-        {/* Card */}
-        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            {/* Left — dark panel with dot pattern */}
-            <div
-              className="flex-1 p-10 relative overflow-hidden"
-              style={{ background: "#2b1f51" }}
-            >
-              {/* Dot pattern overlay */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  backgroundImage: `radial-gradient(circle, #85c22615 1px, transparent 1px)`,
-                  backgroundSize: "22px 22px",
-                }}
-              />
+        {/* 3-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-              {/* Content */}
-              <div className="relative z-10 space-y-7">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span
-                      className="w-1 h-6 rounded-full"
-                      style={{ background: "#85c226" }}
-                    />
-                    <h3 className="text-white font-black text-2xl">
-                      Contact Information
-                    </h3>
-                  </div>
-                  <p className="text-gray-400 text-sm">
-                    Fill the form or reach us directly
-                  </p>
-                </div>
+          {/* Col 1 — Contact Info */}
+          <div className="rounded-2xl p-6 flex flex-col gap-4"
+            style={{ background: "#2b1f51" }}>
 
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{
-                      background: "#85c22625",
-                      border: "1px solid #85c22640",
-                    }}
-                  >
-                    <Phone size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Phone</p>
-                    <a
-                      href={`tel:${clinicConfig.contact.phone}`}
-                      className="text-white font-bold hover:text-yellow-300 transition-colors"
-                    >
-                      {clinicConfig.contact.phoneDisplay}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{
-                      background: "#85c22625",
-                      border: "1px solid #85c22640",
-                    }}
-                  >
-                    <Mail size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Email</p>
-                    <a
-                      href={`mailto:${clinicConfig.contact.email}`}
-                      className="text-white font-bold hover:text-yellow-300 transition-colors"
-                    >
-                      {clinicConfig.contact.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{
-                      background: "#85c22625",
-                      border: "1px solid #85c22640",
-                    }}
-                  >
-                    <MapPin size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Address</p>
-                    <p className="text-white font-bold leading-relaxed text-sm">
-                      {clinicConfig.contact.address}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{
-                      background: "#85c22625",
-                      border: "1px solid #85c22640",
-                    }}
-                  >
-                    <Clock size={18} className="text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-xs mb-1">Timings</p>
-                    <p className="text-white font-bold">
-                      {clinicConfig.timings.days}: {clinicConfig.timings.hours}
-                    </p>
-                    {/* <p className="text-gray-400 text-sm">
-                        {clinicConfig.timings.sunday}
-                      </p> */}
-                  </div>
-                </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-1 h-5 rounded-full" style={{ background: "#85c226" }} />
+                <h3 className="text-white font-black text-lg">Contact Information</h3>
               </div>
+              <p className="text-xs ml-3" style={{ color: "#c4b8e8" }}>
+                Fill the form or reach us directly
+              </p>
             </div>
 
-            {/* Right — Form */}
-            <div className="flex-1 p-10 bg-white">
-              {success ? (
-                <div className="text-center py-16">
-                  <div className="text-6xl mb-4">✅</div>
-                  <h3 className="text-2xl font-black text-gray-800 mb-2">
-                    Message Sent!
-                  </h3>
-                  <p className="text-gray-500">
-                    We'll get back to you shortly.
-                  </p>
-                  <button
-                    onClick={() => setSuccess(false)}
-                    className="mt-6 bg-blue-700 text-white font-bold px-6 py-2.5 rounded-full hover:bg-blue-800 transition-colors cursor-pointer"
-                  >
-                    Send Another
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <h3 className="text-xl font-black text-gray-800 mb-8">
-                    Send us a Message
-                  </h3>
-
-                  <div className="space-y-5">
-                    {/* Name */}
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Your Name *"
-                        value={form.name}
-                        onChange={(e) => {
-                          setForm({ ...form, name: e.target.value });
-                          if (errors.name)
-                            setErrors({ ...errors, name: undefined });
-                        }}
-                        className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors ${
-                          errors.name
-                            ? "border-red-400 bg-red-50"
-                            : "border-gray-200 focus:border-blue-700"
-                        }`}
-                      />
-                      {errors.name && (
-                        <p className="text-red-500 text-xs mt-1.5 ml-1">
-                          {errors.name}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Phone */}
-                    <div>
-                      <input
-                        type="tel"
-                        placeholder="Phone Number * (10 digits)"
-                        value={form.phone}
-                        onChange={(e) => {
-                          setForm({ ...form, phone: e.target.value });
-                          if (errors.phone)
-                            setErrors({ ...errors, phone: undefined });
-                        }}
-                        className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors ${
-                          errors.phone
-                            ? "border-red-400 bg-red-50"
-                            : "border-gray-200 focus:border-blue-700"
-                        }`}
-                      />
-                      {errors.phone && (
-                        <p className="text-red-500 text-xs mt-1.5 ml-1">
-                          {errors.phone}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <input
-                        type="email"
-                        placeholder="Email (optional)"
-                        value={form.email}
-                        onChange={(e) => {
-                          setForm({ ...form, email: e.target.value });
-                          if (errors.email)
-                            setErrors({ ...errors, email: undefined });
-                        }}
-                        className={`w-full border rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors ${
-                          errors.email
-                            ? "border-red-400 bg-red-50"
-                            : "border-gray-200 focus:border-blue-700"
-                        }`}
-                      />
-                      {errors.email && (
-                        <p className="text-red-500 text-xs mt-1.5 ml-1">
-                          {errors.email}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Message */}
-                    <textarea
-                      placeholder="Your message (optional)"
-                      value={form.message}
-                      onChange={(e) =>
-                        setForm({ ...form, message: e.target.value })
-                      }
-                      rows={4}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-700 transition-colors resize-none"
-                    />
+            <div className="flex flex-col gap-3 mt-2">
+              {contactItems.map((item) => (
+                <div key={item.label} className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                    style={{ background: "#85c22625", border: "1px solid #85c22640", color: "#85c226" }}>
+                    {item.icon}
                   </div>
-
-                  {serverError && (
-                    <p className="text-red-500 text-sm mt-3">{serverError}</p>
-                  )}
-
-                  <button
-                    onClick={handleSubmit}
-                    disabled={loading}
-                    className="mt-5 w-full text-white font-bold py-3 rounded-full transition-colors cursor-pointer disabled:opacity-60"
-                    style={{
-                      background: "#2b1f51",
-                      border: "2px solid #85c226",
-                    }}
-                  >
-                    {loading ? "Sending..." : "Send Message"}
-                  </button>
-                </>
-              )}
+                  <div>
+                    <p className="text-xs font-semibold mb-0.5" style={{ color: "#85c226" }}>
+                      {item.label}
+                    </p>
+                    {item.href ? (
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined}
+                        className="text-white text-xs leading-snug hover:text-green-400 transition-colors">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-white text-xs leading-snug">{item.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
+
+            {/* WhatsApp CTA */}
+            <a
+              href={`https://wa.me/91${clinicConfig.contact.phone.replace(/\s/g, "")}`}
+              target="_blank"
+              className="mt-auto flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm transition-all hover:opacity-90"
+              style={{ background: "#85c226", color: "#2b1f51" }}
+            >
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.564 4.14 1.544 5.872L0 24l6.335-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.374l-.36-.213-3.72.893.938-3.617-.234-.373A9.818 9.818 0 1112 21.818z"/>
+              </svg>
+              WhatsApp Us
+            </a>
           </div>
+
+          {/* Col 2 — Form */}
+          <div className="rounded-2xl p-6 bg-white shadow-sm border"
+            style={{ borderColor: "#e8e4f5" }}>
+            <h3 className="font-black text-lg mb-5" style={{ color: "#2b1f51" }}>
+              Send us a Message
+            </h3>
+
+            {success ? (
+              <div className="flex flex-col items-center justify-center h-48 gap-3">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center text-2xl"
+                  style={{ background: "#f0ffd6" }}>✅</div>
+                <p className="font-black text-center" style={{ color: "#2b1f51" }}>
+                  Message Sent!
+                </p>
+                <p className="text-gray-500 text-sm text-center">
+                  We'll call you back shortly.
+                </p>
+                <button onClick={() => setSuccess(false)}
+                  className="text-xs font-bold mt-2 cursor-pointer"
+                  style={{ color: "#85c226" }}>
+                  Send another →
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                {[
+                  { field: "name", placeholder: "Your Name *", type: "text" },
+                  { field: "phone", placeholder: "Phone Number * (10 digits)", type: "tel" },
+                  { field: "email", placeholder: "Email (optional)", type: "email" },
+                ].map(({ field, placeholder, type }) => (
+                  <div key={field}>
+                    <input
+                      type={type}
+                      placeholder={placeholder}
+                      value={form[field as keyof typeof form]}
+                      onChange={(e) => handleChange(field, e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-all"
+                      style={{
+                        borderColor: errors[field] ? "#ef4444" : "#e8e4f5",
+                        background: errors[field] ? "#fef2f2" : "#f8f7ff",
+                        color: "#2b1f51",
+                      }}
+                    />
+                    {errors[field] && (
+                      <p className="text-red-500 text-xs mt-1 ml-1">{errors[field]}</p>
+                    )}
+                  </div>
+                ))}
+
+                <textarea
+                  placeholder="Your message (optional)"
+                  rows={3}
+                  value={form.message}
+                  onChange={(e) => handleChange("message", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-xl border text-sm outline-none transition-all resize-none"
+                  style={{ borderColor: "#e8e4f5", background: "#f8f7ff", color: "#2b1f51" }}
+                />
+
+                <button
+                  onClick={handleSubmit}
+                  disabled={loading}
+                  className="w-full py-3 rounded-xl font-black text-sm transition-all hover:opacity-90 cursor-pointer disabled:opacity-60"
+                  style={{ background: "#2b1f51", color: "#ffffff", border: "2px solid #85c226" }}
+                >
+                  {loading ? "Sending..." : "Send Message"}
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Col 3 — Map */}
+          <div className="rounded-2xl overflow-hidden shadow-sm border"
+            style={{ borderColor: "#e8e4f5", minHeight: "400px" }}>
+            <div className="p-4 flex items-center gap-2"
+              style={{ background: "#2b1f51" }}>
+              <MapPin size={16} color="#85c226" />
+              <p className="text-white font-bold text-sm">Find Us</p>
+              <a
+                href={clinicConfig.contact.mapUrl}
+                target="_blank"
+                className="ml-auto text-xs font-bold hover:opacity-80 transition-opacity"
+                style={{ color: "#85c226" }}
+              >
+                Open in Maps ↗
+              </a>
+            </div>
+            <iframe
+              src={clinicConfig.googleMapsEmbed}
+              width="100%"
+              height="100%"
+              style={{ border: 0, minHeight: "350px" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+
         </div>
       </div>
     </section>

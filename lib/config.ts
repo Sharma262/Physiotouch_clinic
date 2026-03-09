@@ -15,6 +15,7 @@ export const clinicConfig = {
     email: "sharmakavi134@gmail.com",
     address: "H No. 973, Behind Community Centre, Near DPS School, Sector 45, Gurugram, Haryana",
     area: "Sector 45, Gurugram",
+    mapUrl: "https://maps.app.goo.gl/FSKJxwKjS2NzuyMm9"
   },
   timings: {
     days: "Mon – Sun",

@@ -50,9 +50,9 @@ export default function ReviewCard({
       {/* Bottom — name + Google logo */}
       <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
         <div>
-          <p className="font-bold text-sm" style={{ color: "#2b1f51" }}>
+          <h3 className="font-bold text-sm" style={{ color: "#2b1f51" }}>
             {review.name}
-          </p>
+          </h3>
           <p className="text-gray-400 text-xs">Google Review</p>
         </div>
         <svg viewBox="0 0 48 48" className="w-8 h-8">

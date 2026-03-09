@@ -47,7 +47,7 @@ export default function ReviewsSection() {
           <h2 className="text-3xl md:text-4xl font-black mb-1" style={{ color: "#2b1f51" }}>
             What Our Patients Say
           </h2>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-500 text-sm">
             Real experiences from our patients about Physiotouch Clinic
           </p>
         </div>
@@ -65,12 +65,14 @@ export default function ReviewsSection() {
           {/* Prev / Next */}
           <button
             onClick={scrollPrev}
+            aria-label="Previous review"
             className="absolute -left-1 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-full shadow-md flex items-center justify-center hover:bg-blue-700 hover:text-white hover:border-blue-700 transition-all cursor-pointer"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={scrollNext}
+            aria-label="Next review"
             className="absolute -right-1 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-200 rounded-full shadow-md flex items-center justify-center hover:bg-blue-700 hover:text-white hover:border-blue-700 transition-all cursor-pointer"
           >
             <ChevronRight size={20} />

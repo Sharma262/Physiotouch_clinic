@@ -13,14 +13,14 @@ export default function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <Image
                 src="/logo-white-bg.jpeg"
-                alt="Physiotouch Clinic Logo"
+                alt="Physiotouch Clinic - Best Physiotherapy in Sector 45 Gurugram"
                 width={80}
                 height={80}
                 className="object-contain w-16 h-16 md:w-20 md:h-20 rounded-full"
                 // brightness-0 invert makes it white for the dark footer
               />
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            <p className="text-gray-300 text-sm leading-relaxed mb-6">
               Expert physiotherapy in Sector 45, Gurugram. Healing pain,
               restoring movement.
             </p>
@@ -28,6 +28,7 @@ export default function Footer() {
             <div className="flex gap-3">
               <a
                 href={clinicConfig.social.instagram}
+                aria-label="Follow Physiotouch Clinic on Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
@@ -37,6 +38,7 @@ export default function Footer() {
               </a>
               <a
                 href={clinicConfig.social.whatsapp}
+                aria-label="Chat with Physiotouch Clinic on WhatsApp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
@@ -140,6 +142,7 @@ export default function Footer() {
             <div className="rounded-xl overflow-hidden h-48 bg-gray-800">
               <iframe
                 src={clinicConfig.googleMapsEmbed}
+                title="Physiotouch Clinic location on Google Maps"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

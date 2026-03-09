@@ -54,7 +54,7 @@ export default function AboutSection() {
           >
             Best Physiotherapy Clinic For Pain & Rehabilitation in Gurugram
           </h2>
-          <p className="text-gray-500 leading-relaxed max-w-2xl">
+          <p className="text-gray-600 leading-relaxed max-w-2xl">
             Physiotouch Clinic is a dedicated physiotherapy centre in Sector 45,
             Gurugram, founded by{" "}
             <strong className="text-gray-700">
@@ -75,12 +75,12 @@ export default function AboutSection() {
                 className="rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default"
                 style={{ background: "#f8f7ff", borderColor: "#e8e4f5" }}
               >
-                <h4
+                <h3
                   className="font-black text-lg mb-2 leading-tight"
                   style={{ color: "#2b1f51" }}
                 >
                   {item.title}
-                </h4>
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">
                   {item.description}
                 </p>

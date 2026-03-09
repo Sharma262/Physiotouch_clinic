@@ -40,11 +40,11 @@ export default function ReviewsSection() {
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Heading */}
         <div className="mb-10">
-          <span className="flex items-center gap-2 text-blue-700 font-bold text-sm mb-3">
-            <span className="w-1 h-5 bg-blue-700 rounded-full inline-block" />
+        <span className="flex items-center gap-2 font-bold text-sm mb-3" style={{ color: "#2b1f51" }}>
+        <span className="w-1 h-5 rounded-full inline-block" style={{ background: "#85c226" }} />
             Patient Reviews
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-800 mb-1">
+          <h2 className="text-3xl md:text-4xl font-black mb-1" style={{ color: "#2b1f51" }}>
             What Our Patients Say
           </h2>
           <p className="text-gray-400 text-sm">

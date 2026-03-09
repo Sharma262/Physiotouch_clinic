@@ -48,7 +48,7 @@ export default function ContactSection() {
     {
       icon: <Phone size={16} />,
       label: "Phone",
-      value: `${clinicConfig.contact.phone} / ${clinicConfig.contact.phone2}`,
+      value: `${clinicConfig.contact.phoneDisplay}`,
       href: `tel:${clinicConfig.contact.phone}`,
     },
     {

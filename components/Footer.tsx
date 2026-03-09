@@ -1,5 +1,5 @@
 import { clinicConfig } from "@/lib/config";
-import { Phone, Mail, MapPin, Clock, Instagram, Facebook } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Instagram } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -85,7 +85,7 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin
                   size={15}
-                  className="text-blue-400 mt-0.5 shrink-0"
+                  className="mt-0.5 shrink-0"
                   style={{ color: "#85c226" }}
                 />
                 <p className="text-sm leading-relaxed">

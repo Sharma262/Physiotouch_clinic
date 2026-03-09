@@ -71,7 +71,7 @@ export default function RootLayout({
       "latitude": "28.4449",
       "longitude": "77.0653"
     },
-    "openingHours": "Mo-Sa 09:00-20:00",
+    "openingHours": "Mo-Su 09:00-20:00",
     "medicalSpecialty": "Physiotherapy",
     "priceRange": "₹₹"
   };

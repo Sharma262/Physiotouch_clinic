@@ -25,7 +25,7 @@ export default async function Image() {
           Expert Physiotherapy · Sector 45, Gurugram
         </p>
         <p style={{ color: "#fde68a", fontSize: 28, marginTop: 20 }}>
-          Book Appointment: +91 83072 10468
+          Book Appointment: +91 95605 79893
         </p>
       </div>
     ),

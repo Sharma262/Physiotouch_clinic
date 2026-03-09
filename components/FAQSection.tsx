@@ -5,7 +5,7 @@ import { clinicConfig } from "@/lib/config";
 import { Plus, Minus } from "lucide-react";
 
 export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

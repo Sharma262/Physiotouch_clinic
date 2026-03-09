@@ -93,7 +93,7 @@ export const emailWrapper = (content: string) => `
               </p>
               <p class="force-text-muted"
                 style="margin:0 0 10px;color:#c4b8e8 !important;font-size:13px;">
-                🕐 Mon–Sat: 9:00 AM – 8:00 PM
+                🕐 Mon–Sun: 9:00 AM – 8:00 PM
               </p>
               <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
@@ -242,7 +242,7 @@ export const patientEmailContent = (name: string, phone: string) => `
       📞 <strong>+91 95605 79893</strong> &nbsp;|&nbsp; <strong>+91 80590 02867</strong>
     </p>
     <p style="margin:0;color:#ffffff;font-size:13px;">
-      🕐 <strong>Mon–Sat:</strong> 9:00 AM – 8:00 PM
+      🕐 <strong>Mon–Sun:</strong> 9:00 AM – 8:00 PM
     </p>
   </div>
 

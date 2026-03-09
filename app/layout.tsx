@@ -57,7 +57,7 @@ export default function RootLayout({
     "name": "Physiotouch Clinic",
     "description": "Expert physiotherapy clinic in Sector 45, Gurugram specializing in pain relief and rehabilitation",
     "url": "https://physiotouch-clinic.vercel.app",
-    "telephone": "+918307210468",
+    "telephone": "+919560579893",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "House No. 973, Behind Community Centre, Near Delhi Public School, Block C",
@@ -68,10 +68,10 @@ export default function RootLayout({
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "28.4",
-      "longitude": "77.0"
+      "latitude": "28.4449",
+      "longitude": "77.0653"
     },
-    "openingHours": "Mo-Sa 09:00-19:00",
+    "openingHours": "Mo-Sa 09:00-20:00",
     "medicalSpecialty": "Physiotherapy",
     "priceRange": "₹₹"
   };

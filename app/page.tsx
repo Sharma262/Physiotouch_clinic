@@ -9,7 +9,6 @@ import ReviewsSection from "@/components/ReviewSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import VideosSection from "@/components/VideoSection";
-import { clinicConfig } from "@/lib/config";
 import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
@@ -32,7 +31,7 @@ export default function Home() {
       <BookingModal isOpen={modalOpen} onClose={closeModal} />
       {/* WhatsApp floating button */}
       <a
-        href={clinicConfig.social.whatsapp}
+        href="https://wa.me/919560579893"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full shadow-lg flex items-center justify-center transition-all hover:scale-110 cursor-pointer"

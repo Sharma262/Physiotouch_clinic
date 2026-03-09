@@ -127,11 +127,3 @@ export const clinicConfig = {
   ],
 };
 
-const nextConfig = {
-  images: {
-    formats: ["image/avif", "image/webp", "image/png", "image/jpg", "image/jpeg"],
-  },
-  compress: true,
-};
-
-export default nextConfig;
